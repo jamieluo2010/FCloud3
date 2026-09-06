@@ -9,6 +9,8 @@ import CreateWiki from '@/components/Wiki/CreateWiki.vue';
 import { onMounted, ref, useTemplateRef } from 'vue';
 import { guideInfo } from '@/utils/guideInfo';
 import { RouterLink } from 'vue-router';
+import Greeting from '@/components/Greeting.vue';
+import CurrencyManager from '@/components/CurrencyManager.vue';
 
 const api = injectApi();
 const { jumpToViewWiki, jumpToViewWikiRoute } = useWikiParsingRoutesJump();
@@ -31,7 +33,7 @@ onMounted(async()=>{
 </script>
 
 <template>
-    <h1>欢迎</h1>
+    <Greeting />
     <div class="welcome">
         {{ guideInfo.welcome }}
         <RouterLink v-if="introPathName" :to="jumpToViewWikiRoute(introPathName)">平台介绍</RouterLink>
@@ -56,6 +58,7 @@ onMounted(async()=>{
     </SideBar>
     <WikiCenteredHomePage>
     </WikiCenteredHomePage>
+    <CurrencyManager />
     <Footer></Footer>
 </template>
 
@@ -75,12 +78,4 @@ a{
     text-align: center;
     margin: 10px;
     color: #666;
-    white-space: pre-wrap;
-}
-h1{
-    text-align: center;
-    border: none;
-    padding: 0px;
-    font-size: 22px;
-}
 </style>
